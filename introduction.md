@@ -22,3 +22,19 @@ listenerは指定したルールに従って、設定したプロトコルやポ
 下記の図は基本的な構成を示している。注意：各listenerはdefaultのルールが含まれている。一つのlistenerは違うターゲットグループに伝送する別のルールを含む。一つのターゲットは２つのターゲットグループに登録されている。
 
 ![elbv2fig1](elbv2fig1.svg)
+より詳細の情報は下記のドキュメントを参照
+
+* Load Balancers
+* Listeners
+* Target Groups
+
+##Benefits
+Classic Load Balancerの代わりのApplication Load Balancerを使うと以下のベネフィットがある
+* path-baseのルーティングをサポートしている。リクエストの中にあるURLをベースにリクエストを転送するlistenerのルールを設定できる。URLの内容に基いて正しいサービスにリクエストを転送し、よりサービスを小さく構築することが出来る。
+* 複数のポートを使用して登録された一つのEC2インスタンスに複数のサービスを転送する事ができる。
+* コンテナアプリケーションをサポートしている。ECSはタスクの登録やスケジュールをターゲットグループに行う時に未使用のポートを選択できる。これはクラスタを効率よく使うことが出来る。
+* それぞれの独立したサービスのモニターリングをサポートしている。ターゲットグループレベルで定義したhealth checkとターゲットグループレベルでの沢山のCloudWatchメトリクスのレポート。ターゲットグループをAuto Scaling groupに追加することで必要に応じて動的に各サービスの拡張をすることが出来る。
+* 追加情報を含んだアクセスログは圧縮されたフォーマとで保存される。
+* ロードバランサーのパフォーマンスが改善された。
+
+より詳しい情報は[Features of Elastic Load Balancing](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#elb-features)
