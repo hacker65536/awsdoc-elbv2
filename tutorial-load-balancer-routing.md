@@ -29,8 +29,7 @@ URL pathに基いてリクエストの転送ルールが入っているlistener�
 15. **Configure Load Balancer**ページを以下のように設定する
   16. **Name**にload balancerの名前を入力する<br /><br />
 ALBの名前はリージョン内ではユニークである必要がある。最大で32文字、アルファベットとハイフンが使用可能。最初と最後にハイフンを使用することは出来ない。
-  17. **Scheme**
-
-
-
-
+  17. **Scheme** では、Internet-facing ロードバランサーはinternet上のクライアントからのリクエストを振り分ける。internal ロードバランサーはターゲットへの振り分けはプラベートIPを使用する。
+  18. **Listeners**では、80番のHTTPをdefaultでは許可する。それ以外のプロトコルとポートに修正することができ、**Add**を選び別のlistenerを追加することが出来る。
+  19. **VPC**では、使用したいEC2インスタンスと同じVPCを選択する
+  20. **Available subnets**では少なくとも２つのsubnetを選択し、**Actions**列でアイコンを選び。**Selectd subnets**で
