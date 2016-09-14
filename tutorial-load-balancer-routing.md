@@ -32,4 +32,27 @@ ALBの名前はリージョン内ではユニークである必要がある。�
   17. **Scheme** では、Internet-facing ロードバランサーはinternet上のクライアントからのリクエストを振り分ける。internal ロードバランサーはターゲットへの振り分けはプラベートIPを使用する。
   18. **Listeners**では、80番のHTTPをdefaultでは許可する。それ以外のプロトコルとポートに修正することができ、**Add**を選び別のlistenerを追加することが出来る。
   19. **VPC**では、使用したいEC2インスタンスと同じVPCを選択する
-  20. **Available subnets**では少なくとも２つのsubnetを選択し、**Actions**列でアイコンを選び。**Selectd subnets**で
+  20. **Available subnets**では少なくとも２つのsubnetを選択し、**Actions**列でアイコンを選びと**Selectd subnets**に移動する。Note Avaliability Zone毎に一つのsubentを選ぶ事ができる。もしAZから選んだsubnetがすでにあれば現在選択したsubnetに置き換えられる。
+  21. **Next: Configure Security Settings**を選択
+11. もし以前にSecure listenerを作成したことがあれば、次のように**Configure Security Settigns**を完成させる
+  12. もしAWS Certificate Managerの証明書があれば、**Choose an existign certificate from AWS Certificate Manager(ACM)**を選び、**Certificatenme**から証明書を選ぶ
+  13. もしすでにIAMを使用して証明書をアップロードしているのであれば、**Choose an existing certificate from AWS Identity and Access Management (IAM)**から証明書を選ぶ
+  14. もしアップロード出来る証明書があれば**Upload a new SSL Certificate to AWS Identity and Access Management(IAM)**を選ぶ。**Certificate name**に証明書の名前を入力、**Private Key**にはPEM-encoded形式のprivate keyファイルの中身をコピーペースト、**Public Key Certificate**ではPem-encoded形式のPublic keyファイルの中身をコピーペースト、**Certificate Chain**にはPem-encoded形式のCertificate chain ファイルの中身をコピーペースト、自己署名証明書を使っていて、ブラウザは暗黙の内に証明書を受け入れる事が重要ではない限り。
+  15. **Select Policy**では存在しているsecurity policyを一つ選ぶ
+12. **Next: Configure Security Groups**を選ぶ
+13. **Configure Security Groups**ページは以下のように設定する
+  14. **Create a new security group**を選択
+  15. nameとdescriptionを入力するかdefaultを使用する。この新しいsecurity groupは**Configure Load Balancer**ページで選択しているポートのトラフィックを許可するルールが含まれている
+  16. **Next: Configure ROuting**を選ぶ
+14. **Configure Routing**を以下のように設定する
+  15. **Target group**ではすでにあるtarget groupを選ぶ
+  16. 作ったターゲットグループから一つ目のターゲットグループを選ぶ
+  17. **Next: Register Targets**を選択
+15. **Register Targets**ページではターゲットグループに登録したインスタンスが**Registered instances**下に表示される。wizardを完了させるまで登録されたターゲットの変更はできない。**Next: Review**を選択
+16. **Review**ページで**Create**を選択
+17. ロードバランサーの作成成功が通知されたら**Close**を選択
+18. 新規作成されたロードバランサーを選択
+19. **Listeners**タブでは矢印アイコンでlistenerのルールを見る。**Add rule**を選択する。ルールは以下のように指定できる
+  20. **Target group name**では作った二つ目のターゲットグループを選択
+  21. **Path pattern**ではpath-based routingのパターンを指定する(e.g. /img/*)
+  22. **Save**を選ぶ
