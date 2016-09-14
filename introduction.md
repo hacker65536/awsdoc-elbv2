@@ -43,6 +43,6 @@ Classic Load Balancerの代わりのApplication Load Balancerを使うと以下�
 ##How to Get Started
 下記のtutorialの一つを試し、ALBを作成してみよう
 
-* [Getting Started with Elastic Load Balancing](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/load-balancer-getting-started.html)
+* [Getting Started with Elastic Load Balancing](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/load-balancer-getting-started.html) ELBユーザガイドにある
 * [Tutorial: Use Path-Based Routing with Your Application Load Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/tutorial-load-balancer-routing.html)
 * [Tutorial: Use ECS Containers as Targets for Your Application Load Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/application/tutorial-target-ecs-containers.html)
